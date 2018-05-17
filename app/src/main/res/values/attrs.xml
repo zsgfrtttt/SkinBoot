@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="themeBackground" format="color" />
+    <attr name="themeTextColor" format="color" />
+    <attr name="themeDivider" format="color"/>
+</resources>

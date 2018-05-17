@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layout_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/themeBackground">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:background="?attr/themeBackground"
+        android:layout_margin="@dimen/dp_22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/dp_10"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:contentPadding="@dimen/dp_10">
+        <TextView
+            android:id="@+id/tv_title"
+            android:background="?attr/themeBackground"
+            android:textColor="?attr/themeTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="夜间模式，多主题换肤  了解一下？？"/>
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/btnChange"
+        android:background="?attr/themeBackground"
+        android:textColor="?attr/themeTextColor"
+        android:layout_margin="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>
