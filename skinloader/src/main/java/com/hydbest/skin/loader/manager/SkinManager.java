@@ -69,7 +69,6 @@ public class SkinManager {
             mCurPluginPath = skinPluginPath;
             mCurPluginPkg = skinPluginPkg;
         } catch (Exception e) {
-            //TODO
             mPrefUtil.clear();
             e.printStackTrace();
         }

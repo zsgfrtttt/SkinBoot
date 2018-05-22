@@ -27,20 +27,22 @@ public class SkinAttrSupport {
             if (attrType == null)
                 continue;
 
-            if (attrValue.startsWith("@")){
+            if (attrValue.startsWith("@")) {
+                int id = 0;
                 try {
-                    int id = Integer.parseInt(attrValue.substring(1));
-                    String entryName = context.getResources().getResourceEntryName(id);
-
-                    Log.i("csz","entryName : "+entryName);
-                    if (entryName.startsWith(SkinConfig.ATTR_PREFIX)) {
-                        attr = new SkinAttr(attrType, entryName);
-                        skinAttrs.add(attr);
-                    }
+                    id = Integer.parseInt(attrValue.substring(1));
                 } catch (NumberFormatException e) {
-                    //TODO style
                     e.printStackTrace();
+                    continue;
                 }
+                String entryName = context.getResources().getResourceEntryName(id);
+
+                Log.i("csz", "entryName : " + entryName);
+                if (entryName.startsWith(SkinConfig.ATTR_PREFIX)) {
+                    attr = new SkinAttr(attrType, entryName);
+                    skinAttrs.add(attr);
+                }
+
             }
         }
 
