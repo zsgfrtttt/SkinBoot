@@ -14,6 +14,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.hydbest.skin.loader.base.BaseSkinActivity;
+import com.hydbest.skin.loader.manager.SkinManager;
 import com.hydbest.skinboot.R;
 
 import java.io.File;
@@ -23,9 +25,9 @@ import java.lang.reflect.Method;
  * Created by csz on 2018/5/21.
  */
 
-public class DrawableActivity extends AppCompatActivity {
+public class DrawableActivity extends BaseSkinActivity {
     private String mPackName = "com.hydbest.skinplugin";
-    private String mPluginPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "app_plugin.apk";
+    private String mPluginPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "app-debug.apk";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,23 +35,24 @@ public class DrawableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drawable);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void loadPlugin(View v) {
-        try {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-            } else {
-                AssetManager assetManager = AssetManager.class.newInstance();
-                Method addAssetPath = assetManager.getClass().getMethod("addAssetPath", String.class);
-                addAssetPath.invoke(assetManager, mPluginPath);
-
-                Resources superResource = getResources();
-                Resources resources = new Resources(assetManager, superResource.getDisplayMetrics(), superResource.getConfiguration());
-                Drawable bg = resources.getDrawable(resources.getIdentifier("main_bg", "drawable", mPackName));
-                findViewById(R.id.root).setBackground(bg);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void defaultSkin(View view){
+        SkinManager.getInstance().changeSkin(null);
+    }
+    public void greenSkin(View view){
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
+            return;
         }
+        SkinManager.getInstance().changeSkin(mPluginPath,mPackName,"green",null);
+    }
+    public void redSkin(View view){
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},0);
+            return;
+        }
+        SkinManager.getInstance().changeSkin(mPluginPath,mPackName,"red",null);
+    }
+    public void graySkin(View view){
+        SkinManager.getInstance().changeSkin("gray");
     }
 }

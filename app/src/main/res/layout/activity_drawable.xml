@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/main_bg">
-    <Button
+    android:background="@drawable/skin_main_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loadPlugin"
-        android:onClick="loadPlugin"/>
-</LinearLayout>
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/skin_textcolor"
+            android:onClick="defaultSkin"
+            android:textSize="@dimen/dp_22"
+            android:padding="@dimen/dp_10"
+            android:text="defaultSkin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/skin_textcolor"
+            android:onClick="greenSkin"
+            android:textSize="@dimen/dp_22"
+            android:padding="@dimen/dp_10"
+            android:text="plugin_greenSkin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/skin_textcolor"
+            android:onClick="redSkin"
+            android:textSize="@dimen/dp_22"
+            android:padding="@dimen/dp_10"
+            android:text="plugin_redSkin" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/skin_textcolor"
+            android:onClick="graySkin"
+            android:textSize="@dimen/dp_22"
+            android:padding="@dimen/dp_10"
+            android:text="app_gray_Skin" />
+    </LinearLayout>
+</RelativeLayout>
